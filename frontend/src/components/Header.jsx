@@ -1,18 +1,4 @@
 
-
-// function Header() {
-//   return (
-//     <div>
-//     Header
-    
-//     </div>
-//   )
-// }
-
-// export default Header
-
-
-
 import logo from '../assets/react.svg';
 import { useState } from 'react';
 
@@ -35,23 +21,15 @@ const Header = () => {
 
                 <nav className="hidden md:flex space-x-4">
                     <a href="/" className="hover:text-gray-100">Home</a>
-                    <a href="/recipes" className="hover:text-gray-100">Recipes</a>
+                    <a href="/pokedex" className="hover:text-gray-100">Pokédex</a>
+                    <a href="/game" className="hover:text-gray-100">Game</a>
                     <a href="/about" className="hover:text-gray-100">About</a>
                 </nav>
 
                 <div className=" hidden md:flex px-5">
-                    <input
-                        type="text"
-                        placeholder="Find recipe here"
-                        className="px-12 rounded-md text-white focus:outline-none focus:bg-gray-500"
-                    />
-                    <button type="submit" className="mx-1 border border-green-500 bg-transparent text-green-500 hover:bg-green-700 hover:text-white rounded-md px-3">
-                        <i className="fas fa-search"></i>
+                    <button className='text-white bg-gray-500 ml-12 px-4 py-2 rounded-md hover:bg-gray-700'>Sign Up
                     </button>
-
-                    <button className='text-white bg-green-500 ml-12 px-4 py-2 rounded-md hover:bg-green-700'>Sign Up
-                    </button>
-                    <button className='text-white bg-green-500 ml-4 px-4 py-2 rounded-md hover:bg-green-700'>Log In
+                    <button className='text-white bg-gray-500 ml-4 px-4 py-2 rounded-md hover:bg-gray-700'>Log In
                     </button>
                 </div>
             
@@ -66,22 +44,15 @@ const Header = () => {
 
             {isMenuOpen && (
                 <div className="md:hidden py-2 px-4">
-                    <input
-                        type="text"
-                        placeholder="Find recipe here"
-                        className="px-12 py-2 ml-12 rounded-md text-white focus:outline-none focus:bg-gray-500"
-                    />
-                    <button type="submit" className="mx-1 border border-green-500 bg-transparent text-green-500 hover:bg-green-500 hover:text-white rounded-md px-4 py-2">
-                        <i className="fas fa-search"></i>
-                    </button>
                     <div className='nav-list'>
-                        <a href="/" className="block py-2 px-4 font-bold hover:bg-green-500">Home</a>
-                        <a href="/recipes" className="block py-2 px-4 font-bold hover:bg-green-500">Recipes</a>
-                        <a href="/about" className="block py-2 px-4 font-bold hover:bg-green-500">About</a>
+                        <a href="/" className="block py-2 px-4 font-bold hover:bg-gray-500">Home</a>
+                        <a href="/recipes" className="block py-2 px-4 font-bold hover:bg-gray-500">Pokédex</a>
+                        <a href="/recipes" className="block py-2 px-4 font-bold hover:bg-gray-500">Game</a>
+                        <a href="/about" className="block py-2 px-4 font-bold hover:bg-gray-500">About</a>
                     </div>
                     <div className='sign-list'>
-                        <button className='mx-4 text-white bg-green-500 px-4 py-2 rounded-md hover:bg-green-700'>Sign Up</button>
-                        <button className='text-white bg-green-500 px-4 py-2 rounded-md hover:bg-green-700'>Log In</button> 
+                        <button className='mx-4 text-white bg-gray-500 px-4 py-2 rounded-md hover:bg-gray-700'>Sign Up</button>
+                        <button className='text-white bg-gray-500 px-4 py-2 rounded-md hover:bg-gray-700'>Log In</button> 
                     </div>
                     
                 </div>
