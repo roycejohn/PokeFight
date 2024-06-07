@@ -18,8 +18,8 @@ function App() {
       <Header />
         <Routes>
           <Route path="/" element={<Home />} /> 
-          <Route path="/pokedex" element={<PokeList />} /> 
-          <Route path="/pokedex/:id" element={<PokeDetails />} />
+          <Route path="/pokemons" element={<PokeList />} /> 
+          <Route path="/pokemons/:id" element={<PokeDetails />} />
           <Route path="/game" element={<Game />} /> 
           <Route path="/about" element={<About />} /> 
         </Routes>
