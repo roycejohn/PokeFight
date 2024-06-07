@@ -1,4 +1,4 @@
-// Import the JSON file
+// Import the JSON file      ---- THIS ARE CONTROLERS FOR USING JSON FILE FROM ROOT 
 let jsonData = require('../pokedex.json');
 
 
