@@ -14,18 +14,30 @@ import Game from './Pages/Game'
 
 function App() {
   return(
-    <>
-      <Header />
-        <Routes>
-          <Route path="/" element={<Home />} /> 
-          <Route path="/pokemons" element={<PokeList />} /> 
-          <Route path="/pokemons/:id" element={<PokeDetails />} />
-          <Route path="/game" element={<Game />} /> 
-          <Route path="/about" element={<About />} /> 
-        </Routes>
-      <Footer />
-    </>
-
+    // <>
+    //   <Header />
+    //     <Routes>
+    //       <Route path="/" element={<Home />} /> 
+    //       <Route path="/pokemons" element={<PokeList />} /> 
+    //       <Route path="/pokemons/:id" element={<PokeDetails />} />
+    //       <Route path="/game" element={<Game />} /> 
+    //       <Route path="/about" element={<About />} /> 
+    //     </Routes>
+    //   <Footer />
+    // </>
+    <div className="app-container">
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pokemons" element={<PokeList />} />
+            <Route path="/pokemons/:id" element={<PokeDetails />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
   );
  
 }

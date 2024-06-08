@@ -44,36 +44,42 @@ const PokeDetails = () => {
   }
 
   return(
-    <div >
-      {pokemon && (
-        <div className="poke-container">
-          <div className="left-column">
-            <div className="poke-details">
-              <h2>{pokemon.name.english}</h2>
-              <p>Type: {pokemon.type.join(", ")}</p>
-            </div>
-            
-            <div className="stat-value">
-              {Object.entries(pokemon.base).map(([stat, value]) => (
-                <div key={stat}>
-                  <p>{stat}</p>
-                  <p>{value}</p>
-                </div>
-              ))}
-            </div>
+    <div className="poke-details" >
+     {pokemon && (
+      <div className="poke-container">
+        <div className="left-column">
+          <div className="poke-details">
+            <h2>{pokemon.name.english}</h2>
+            <p>Type: {pokemon.type.join(", ")}</p>
           </div>
-          <div className="right-column">
-            <div className="image-details">
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
-                alt={pokemon.name}
-              />
-              
-            </div>
-            <p># {pokemon.id}</p>
+          <div className="stat-value">
+            {Object.entries(pokemon.base).map(([stat, value]) => {
+              const statClass = stat.toLowerCase().replace(' ', '-');
+              const barStyle = { width: `${(value / 255) * 100}%` };
+              return (
+                <div key={stat} className={`stat-item ${statClass}`}>
+                  <p className="stat-name">{stat}</p>
+                  <div className="stat-bar-container">
+                    <div className="stat-bar" style={barStyle}>
+                      <span className="stat-value-text">{value}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      )}
+        <div className="right-column">
+          <div className="image-details">
+            <img
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+              alt={pokemon.name}
+            />
+          </div>
+          <p className="text-overlay"># {pokemon.id}</p>
+        </div>
+      </div>
+    )}
     </div>
   )};
 

@@ -198,7 +198,7 @@ const PokeList = () => {
         </button>
       </div>
       <div>
-        <ul className="grid grid-cols-4 gap-4">
+        <ul className="grid grid-cols-5 gap-4">
           {searchResults.map(pokemon => (
             <li key={pokemon.id} className="p-2 m-2 bg-gray-100 rounded-md flex flex-col items-center">
               <Link to={`/pokemons/${pokemon.id}`} className="p-2 rounded-md text-center flex flex-col items-center">
@@ -212,23 +212,22 @@ const PokeList = () => {
                 <h3 className="text-lg font-semibold mt-2">#{pokemon.id}</h3>
                 <h3 className="text-lg font-semibold">{pokemon.name}</h3>
                 <p>Type: {pokemon.type.join(', ')}</p>
-                {/* <p>Base: {Object.entries(pokemon.base).map(([stat, value]) => `${stat}: ${value}`).join(', ')}</p> */}
               </Link>
             </li>
           ))}
         </ul>
       </div>
-      <div className="flex justify-between w-full mt-4">
+      <div className="flex justify-center">
         <button 
           onClick={() => handlePageChange(currentPage - 1)}
-          className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"
+          className="px-4 py-2 mt-12 mb-16  mx-4 bg-gray-300 rounded-md hover:bg-gray-400"
           disabled={currentPage === 1}
         >
           Back
         </button>
         <button 
           onClick={() => handlePageChange(currentPage + 1)}
-          className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"
+          className="px-4 py-2 mt-12 mb-16 mx-4 bg-gray-300 rounded-md hover:bg-gray-400"
           disabled={currentPage === totalPages}
         >
           Next
