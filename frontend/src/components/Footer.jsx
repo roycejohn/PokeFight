@@ -7,7 +7,7 @@ function Footer() {
           © 2024 Pokémon are trademarks of Nintendo.
         </p>
         <p className="footer-text">
-          All materials and Pokémon characters used in this project are owned by their respective copyright holders.
+          Pokémon characters used in this project are owned by their respective copyright holders.
         </p>
         
       </div>

@@ -13,7 +13,7 @@ const About = () => {
         <li>Dennis - Web Developer</li>
         <li>Rabia - Web Developer</li>
       </ul>
-      <p>Contact us at: info@wd_50group</p>
+      <p>Contact us at: @wd_50group</p>
     </div>
   );
 }
