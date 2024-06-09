@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function Game() {
   useEffect(() => {
@@ -95,7 +95,13 @@ function Game() {
   }, []);
 
   return (
-    <div id="game">Game</div>
+    <div className="game-page">
+      <header>
+        <h1>PokeMatch</h1>
+        <button onclick="resetGame()">Reset</button>
+      </header>
+      <div id="game"></div>
+    </div>
   );
 }
 
