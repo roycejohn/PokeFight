@@ -51,7 +51,7 @@ footer {
 }
 
 /* game Rabia */
-.game-page {
+/* .game-page {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 5px;
   margin: 0 auto;
@@ -96,8 +96,33 @@ footer {
 }
 
 .front {
-  background-image: url('https://images6.fanpop.com/image/photos/38900000/Pokeball-pokemon-38912743-894-894.png'); /* Updated URL to ensure it points to an actual image */
+  background-image: url('https://images6.fanpop.com/image/photos/38900000/Pokeball-pokemon-38912743-894-894.png');
   background-position: center;
   background-repeat: no-repeat;
   background-color: black;
 }
+
+.card {
+  width: 150px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card .front, .card .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.card .rotated {
+  transform: rotateY(180deg);
+} */
+
