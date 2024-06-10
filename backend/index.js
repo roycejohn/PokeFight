@@ -18,9 +18,9 @@ const PORT = process.env.PORT || 3000;
 app.use(sanitize({replaceWith: '_', allowDots: true}))
 app.use( express.json())
 
-// importing controllers made with json Data file
-//const { getAllPokemons, getPokemonById, getPokemonInfo } = require ("./controllers/json_file_pokemonController")
 
+// importing controllers made with json Data file
+const { getAllPokemons, getPokemonById, getPokemonInfo } = require ("./controllers/json_file_pokemonController")
 
 //  Hello CODE
 app.get("/", (req,res) => {
@@ -29,16 +29,6 @@ app.get("/", (req,res) => {
 })
 
 
-// Pokeomon Routes
-
-app.use("/pokemons", pokemonRouter ); 
-
-
-
-app.listen ( PORT, () => console.log(`Server is live on: http://localhost:${PORT}`))
-
-
-{/* 
 // Get all Pokemons : /pokemon
 app.get( "/json/pokemon", getAllPokemons)
 
@@ -47,6 +37,20 @@ app.get('/json/pokemon/:id', getPokemonById);
 
 // Optional route to get specific information about a Pokémon
 app.get('/json/pokemon/:id/:info', getPokemonInfo);
+
+
+
+
+{/*    MONGO DB
+// Pokeomon Routes
+app.use("/pokemons", pokemonRouter ); 
 */}
+
+
+app.listen ( PORT, () => console.log(`Server is live on: http://localhost:${PORT}`))
+
+
+ 
+
 
 

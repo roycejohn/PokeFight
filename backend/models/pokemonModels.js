@@ -24,11 +24,11 @@ const baseSchema = new Schema ({
 
 const pokemonSchema = new Schema({
 
-    id: {
-        type: Number,
-        required: true,
-        unique: true
-      },
+    // id: {
+    //     type: Number,
+    //     required: true,
+    //     unique: true
+    //   },
 
     name: {
         type: String,
@@ -47,7 +47,9 @@ const pokemonSchema = new Schema({
 
 }, {collection: "pokemonsCollection" } )
 
-module.exports = model( "pokemonCollection", pokemonSchema )
+const PokemonModel = model( "Pokemon", pokemonSchema )
+
+module.exports = PokemonModel
 
 
 
