@@ -1,4 +1,3 @@
-
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
@@ -8,7 +7,6 @@ import PokeList from './Pages/PokeList'
 import PokeDetails from './components/PokeDetails'
 import About from './Pages/About'
 import Game from './Pages/Game'
-
 
 
 
