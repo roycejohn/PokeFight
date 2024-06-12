@@ -8,7 +8,9 @@ import PokeDetails from './components/PokeDetails'
 import About from './Pages/About'
 import Game from './Pages/Game'
 import PokeBoard from './Pages/PokeBoard'
-import PokeFight from './Pages/PokeFight'
+import PokemonSelect from './Pages/PokeFight'
+import PokeBattle from './Pages/PokeBattle'
+
 
 
 
@@ -23,7 +25,8 @@ function App() {
             <Route path="/pokemons/:id" element={<PokeDetails />} />
             <Route path="/game" element={<Game />} />
             <Route path='/game/pokeboard' element={<PokeBoard />} />
-            <Route path='/game/pokefight' element={<PokeFight />} />
+            <Route path='/game/pokefight' element={<PokemonSelect />} />
+            <Route path='/game/pokefight/battle' element={<PokeBattle />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </div>
