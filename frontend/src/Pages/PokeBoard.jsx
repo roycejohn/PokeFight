@@ -49,7 +49,7 @@ function PokeBoard() {
     if (notification) {
       const timer = setTimeout(() => {
         setNotification('');
-      }, 2000); // Adjust the duration (2000ms = 2 seconds) as needed
+      }, 2000); 
       return () => clearTimeout(timer);
     }
   }, [notification]);
