@@ -1,10 +1,16 @@
 // require
 const express = require("express")
 const app = express()
+const cors = require('cors');
 
+
+require("dotenv").config(); 
 const connectionToDB = require("./db/dbConnection")
 const sanitize = require ("express-mongo-sanitize")
-require("dotenv").config(); 
+
+
+ // Use CORS middleware
+ app.use(cors());
 
 // 
 const pokemonRouter = require("./routes/pokemonRoutes")
