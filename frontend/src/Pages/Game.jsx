@@ -4,6 +4,7 @@ function Game() {
   const [pokemon, setPokemon] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
   const [firstPick, setFirstPick] = useState(null);
+  const [notification, setNotification] = useState('');
 
   const colors = {
     fire: '#FDDFDF',
@@ -39,6 +40,7 @@ function Game() {
     const resetGame = async () => {
       const loadedPokemon = await loadPokemon();
       setPokemon([...loadedPokemon, ...loadedPokemon].sort(() => Math.random() - 0.5));
+      setNotification('');
     };
 
     resetGame();
@@ -60,6 +62,7 @@ function Game() {
       const secondPokemonName = poke.name;
       const firstPokemonName = firstPick.dataset.pokemon;
       if (firstPokemonName === secondPokemonName) {
+        setNotification(`It is a match: ${firstPokemonName}!`);
         setFirstPick(null);
         setIsPaused(false);
       } else {
@@ -89,6 +92,7 @@ function Game() {
         <h1>PokeMatch</h1>
         <button onClick={() => window.location.reload()}>Reset</button>
       </header>
+      {notification && <div className="notification">{notification}</div>}
       <div id="game">
         {pokemon.map((poke, index) => {
           const type = poke.types[0]?.type?.name || 'normal';
@@ -115,4 +119,3 @@ function Game() {
 }
 
 export default Game;
-
