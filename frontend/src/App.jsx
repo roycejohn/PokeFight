@@ -7,6 +7,8 @@ import PokeList from './Pages/PokeList'
 import PokeDetails from './components/PokeDetails'
 import About from './Pages/About'
 import Game from './Pages/Game'
+import PokeBoard from './Pages/PokeBoard'
+import PokeFight from './Pages/PokeFight'
 
 
 
@@ -20,6 +22,8 @@ function App() {
             <Route path="/pokemons" element={<PokeList />} />
             <Route path="/pokemons/:id" element={<PokeDetails />} />
             <Route path="/game" element={<Game />} />
+            <Route path='/game/pokeboard' element={<PokeBoard />} />
+            <Route path='/game/pokefight' element={<PokeFight />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </div>
