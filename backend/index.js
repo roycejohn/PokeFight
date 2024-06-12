@@ -1,4 +1,5 @@
 // require
+require("dotenv").config();
 const express = require("express")
 const app = express()
 const cors = require('cors');
@@ -7,10 +8,6 @@ const cors = require('cors');
 require("dotenv").config(); 
 const connectionToDB = require("./db/dbConnection")
 const sanitize = require ("express-mongo-sanitize")
-
-
- // Use CORS middleware
- app.use(cors());
 
 // 
 const pokemonRouter = require("./routes/pokemonRoutes")
@@ -24,6 +21,8 @@ const PORT = process.env.PORT || 3000;
 app.use(sanitize({replaceWith: '_', allowDots: true}))
 app.use( express.json())
 
+// add cors
+app.use(cors());
 
 // importing controllers made with json Data file
 const { getAllPokemons, getPokemonById, getPokemonInfo } = require ("./controllers/json_file_pokemonController")

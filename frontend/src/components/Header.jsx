@@ -23,7 +23,7 @@ const Header = () => {
           <nav className="hidden md:flex space-x-4 ml-auto">
             <a href="/" className="hover:text-gray-100">Home</a>
             <a href="/pokemons" className="hover:text-gray-100">Pokédex</a>
-            <a href="/game" className="hover:text-gray-100">Game</a>
+            <a href="/game" className="hover:text-gray-100">Games</a>
             <a href="/about" className="hover:text-gray-100">About</a>
           </nav>
 
