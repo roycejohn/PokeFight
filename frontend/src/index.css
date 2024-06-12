@@ -377,6 +377,11 @@
 
 /* GAME */
 
+
+
+
+/* POKEBOARD */
+
 .game-page {
   position: relative;
   margin: 5px auto;
@@ -436,14 +441,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgb(235, 176, 176);
-}
-
-.back {
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .back img {
