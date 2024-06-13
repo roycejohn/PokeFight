@@ -1,6 +1,7 @@
 
 import logo from '../assets/pikachu.svg';
-import avatar from '../assets/avatar.png'
+import avatar from '../assets/avatar.png';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -16,10 +17,11 @@ const Header = () => {
     <>
         <header className="relative">
         <div className="container mx-auto py-1 flex justify-between items-center">
-          <div className="logo">
-            <img className="w-28 h-28 cursor-pointer" src={logo} alt="Logo" />
-          </div>
-
+          <Link to='/'>
+            <div className="logo">
+              <img className="w-28 h-28 cursor-pointer" src={logo} alt="Logo" />
+            </div>
+          </Link>
           <nav className="hidden md:flex space-x-4 ml-auto">
             <a href="/" className="hover:text-gray-100">Home</a>
             <a href="/pokemons" className="hover:text-gray-100">Pokédex</a>
