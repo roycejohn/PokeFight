@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function PokeBattle() {
+function PokeFight() {
   const [pokemons, setPokemons] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [opponentPokemon, setOpponentPokemon] = useState(null);
@@ -206,4 +206,4 @@ function PokeBattle() {
   );
 }
 
-export default PokeBattle;
+export default PokeFight;
