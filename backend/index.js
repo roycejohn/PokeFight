@@ -2,6 +2,11 @@
 require("dotenv").config();
 const express = require("express")
 const app = express()
+const gameJsonRouter = require("./routes/pokemonJsonRoutes")  // route for game results
+const mongoose = require('mongoose'); // testing for results
+const BattleResult = require("./models/BattleResults")
+
+
 
 const connectionToDB = require("./db/dbConnection")
 const sanitize = require ("express-mongo-sanitize")
@@ -10,8 +15,9 @@ const sanitize = require ("express-mongo-sanitize")
 const cors = require ('cors');
  
 
-// 
-const pokemonRouter = require("./routes/pokemonRoutes")
+//  Router for MongoDB Pokemon
+{/*  const pokemonRouter = require("./routes/pokemonRoutes")  */}
+
 // connection to Mongo DB
 connectionToDB()
 
@@ -34,6 +40,8 @@ app.get("/", (req,res) => {
         "<h1>Hello Pokedex</h1> <p> Good morning: Royce & Rabia</p> <p>Take your morning coffee :) and dont forget to choose your Pokemon !!</p>")
 })
 
+// route for game results
+app.use("/game", gameJsonRouter)
 
 // Get all Pokemons : /pokemon
 app.get( "/json/pokemon", getAllPokemons)
@@ -44,7 +52,19 @@ app.get('/json/pokemon/:id', getPokemonById);
 // Optional route to get specific information about a Pokémon
 app.get('/json/pokemon/:id/:info', getPokemonInfo);
 
-
+// Endpoint to save battle results
+app.post('/game/saveResult', async (req, res) => {
+    const { winner } = req.body;
+  
+    try {
+      const newResult = new BattleResult({ winner });
+      await newResult.save();
+      res.status(201).json({ message: 'Battle result saved successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Failed to save battle result' });
+    }
+  });
 
 
 {/*    MONGO DB

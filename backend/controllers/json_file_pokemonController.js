@@ -1,6 +1,6 @@
 // Import the JSON file      ---- THIS ARE CONTROLERS FOR USING JSON FILE FROM ROOT 
 let jsonData = require('../pokedex.json');
-
+const GameResult = require("../models/pokeFightSchema")
 
 // Get all Pokemons : /pokemon
 const getAllPokemons = (req,res) => {
@@ -35,5 +35,29 @@ const getPokemonInfo = (req, res) => {
     }
 };
 
+// controler for game results
+const saveResult = async (req,res) => {
+    try{
+        const { playerPokemon, opponentPokemon, winner, battleLog, turns} = req.body;
 
-module.exports = { getAllPokemons, getPokemonById, getPokemonInfo }
+        const gameResult = new GameResult ({
+            playerPokemon, 
+            opponentPokemon,
+            winner,
+            battleLog,
+            turns
+        })
+
+        await gameResult.save();
+        res.status(201).json({ message: "Game saved successfully!"})
+    }
+
+    catch (error) {
+        res.status(500).json({error: "Faild to save Game"})
+    }
+}
+
+
+
+
+module.exports = { getAllPokemons, getPokemonById, getPokemonInfo, saveResult }

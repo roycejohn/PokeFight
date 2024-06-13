@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function PokeFight() {
   const [pokemons, setPokemons] = useState([]);
@@ -25,6 +26,16 @@ function PokeFight() {
         setPokemons(formattedData);
       });
   }, []);
+
+  // Here is function to save battle result to backend Mongo
+  const saveBattleResult = async (winner) => {
+    try {
+      await axios.post('http://localhost:3000/game/saveResult', { winner });
+      console.log('Battle result saved successfully');
+    } catch (err) {
+      console.error('Failed to save battle result:', err);
+    }
+  };
 
   const handleSearchInputChange1 = (e) => {
     setSearchTerm1(e.target.value);
@@ -75,6 +86,7 @@ function PokeFight() {
         setWinner(selectedPokemon.name);
         setBattleLog(log);
         setBattleOver(true);
+        saveBattleResult(selectedPokemon.name); // added if winner is selected to save name
         return;
       }
 
@@ -85,6 +97,7 @@ function PokeFight() {
         setWinner(opponentPokemon.name);
         setBattleLog(log);
         setBattleOver(true);
+        saveBattleResult(opponentPokemon.name); // if winner is opponent to save opponenet name
         return;
       }
 
