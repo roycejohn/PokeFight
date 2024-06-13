@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function PokeBoard() {
   const [pokemon, setPokemon] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
   const [firstPick, setFirstPick] = useState(null);
-  const [notification, setNotification] = useState('');
+  const [notification, setNotification] = useState('Click the Pokeball to start the game!');
   const [matchedPairs, setMatchedPairs] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(45); // Timer set to 45 seconds
+  const [isStarted, setIsStarted] = useState(false); // Track if the game has started
 
   const colors = {
     fire: '#FDDFDF',
@@ -40,29 +42,45 @@ function PokeBoard() {
     const resetGame = async () => {
       const loadedPokemon = await loadPokemon();
       setPokemon([...loadedPokemon, ...loadedPokemon].sort(() => Math.random() - 0.5));
-      setNotification('');
+      setNotification('Click the Pokeball to start the game!');
       setMatchedPairs(0);
+      setTimeLeft(45); // Reset the timer to 45 seconds
+      setIsStarted(false); // Reset the game start status
     };
 
     resetGame();
   }, []);
 
   useEffect(() => {
-    if (notification) {
+    if (notification && notification !== 'Click the Pokeball to start the game!') {
       const timer = setTimeout(() => {
         setNotification('');
-      }, 2000); 
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [notification]);
 
   useEffect(() => {
     if (matchedPairs === pokemon.length / 2 && pokemon.length > 0) {
-      setNotification('Congratulations! You matched all the cards!');
+      setNotification('Good job! You matched all the cards on time!');
     }
   }, [matchedPairs, pokemon.length]);
 
+  useEffect(() => {
+    if (isStarted && timeLeft > 0 && matchedPairs < pokemon.length / 2) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0 && matchedPairs < pokemon.length / 2) {
+      setNotification('Sorry, it did not work. Try again!');
+    }
+  }, [timeLeft, matchedPairs, pokemon.length, isStarted]);
+
   const handleCardClick = (event, poke) => {
+    if (!isStarted) {
+      setIsStarted(true); // Start the timer on the first click
+      setNotification('');
+    }
+
     if (isPaused) return;
     const card = event.currentTarget;
     const [front, back] = getFrontAndBackFromCard(card);
@@ -83,7 +101,7 @@ function PokeBoard() {
         setNotification(`It is a match: ${firstPokemonName}!`);
         setFirstPick(null);
         setIsPaused(false);
-        setMatchedPairs(prev => prev + 1); // Increase matched pairs count by 1
+        setMatchedPairs(prev => prev + 1);
       } else {
         setIsPaused(true);
         setTimeout(() => {
@@ -105,13 +123,35 @@ function PokeBoard() {
     return [front, back];
   };
 
+  const getNotificationClass = () => {
+    if (notification.includes('Sorry')) {
+      return 'notification red';
+    } else if (notification === 'Click the Pokeball to start the game!') {
+      return 'notification-start';
+    }
+    return 'notification';
+  };
+
   return (
     <div className="game-page">
       <header className="header">
         <h1>PokeMatch</h1>
         <button onClick={() => window.location.reload()}>Reset</button>
       </header>
-      {notification && <div className="notification-container"><div className="notification">{notification}</div></div>}
+      {isStarted && <div className="timer">Time left: {timeLeft}s</div>} {/* Display timer only after game starts */}
+      {notification && (
+        <div className="notification-container">
+          <div className={getNotificationClass()}>{notification}</div>
+        </div>
+      )}
+      {!isStarted && (
+        <div className="start-message">
+          <p>Click the Pokeball to start the game!</p>
+          <div className="pokeball" onClick={() => setIsStarted(true)}>
+            <div className="pokeball-interior"></div>
+          </div>
+        </div>
+      )}
       <div id="game">
         {pokemon.map((poke, index) => {
           const type = poke.types[0]?.type?.name || 'normal';

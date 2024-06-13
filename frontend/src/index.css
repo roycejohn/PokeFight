@@ -399,9 +399,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  margin: 10px 0px;
+  padding: 20px;
   width: 100%;
-  background: #499eee;
+  color: rgb(56, 56, 55);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background: #ffcc00;
+  border-radius: 10px;
+  box-shadow: 1px 1px #eae2e2;
 }
 
 #game {
@@ -412,7 +418,7 @@
 }
 
 .card {
-  box-shadow: 0 5px 10px rgba(200, 200, 200, 0.9);
+  box-shadow: 1px 1px #eae2e2;
   border-radius: 20px;
   margin-top: 20px;
   position: relative;
@@ -466,10 +472,25 @@
 .notification {
   margin: 20px 0;
   padding: 10px;
-  background-color: #ffeb3b;
-  border: 1px solid #fbc02d;
+  background-color: #ffcc00;
+  box-shadow: 1px 1px #eae2e2;
   border-radius: 5px;
-  color: #333;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.notification.red {
+  background-color: #f44336;
+}
+
+.notification-start {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #499eee; 
+  box-shadow: 1px 1px #eae2e2;
+  border-radius: 5px;
+  color: #fff;
   font-weight: bold;
   text-align: center;
 }
