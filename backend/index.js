@@ -3,9 +3,7 @@ require("dotenv").config();
 const express = require("express")
 const app = express()
 const gameJsonRouter = require("./routes/pokemonJsonRoutes")  // route for game results
-const mongoose = require('mongoose'); // testing for results
-const BattleResult = require("./models/BattleResults")
-
+// const mongoose = require('mongoose'); // testing for results
 
 
 const connectionToDB = require("./db/dbConnection")
@@ -40,7 +38,9 @@ app.get("/", (req,res) => {
         "<h1>Hello Pokedex</h1> <p> Good morning: Royce & Rabia</p> <p>Take your morning coffee :) and dont forget to choose your Pokemon !!</p>")
 })
 
+
 // route for game results
+// Endpoint to save battle results
 app.use("/game", gameJsonRouter)
 
 // Get all Pokemons : /pokemon
@@ -52,44 +52,6 @@ app.get('/json/pokemon/:id', getPokemonById);
 // Optional route to get specific information about a Pokémon
 app.get('/json/pokemon/:id/:info', getPokemonInfo);
 
-
-// Endpoint to save battle results
-{/* 
-app.post('/game/saveResult', async (req, res) => {
-    const { winner, selectedPokemon, opponentPokemon  } = req.body;
-  
-    try {
-      const newResult = new BattleResult({ winner, selectedPokemon, opponentPokemon  });
-      await newResult.save();
-      res.status(201).json({ message: 'Battle result saved successfully' });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: 'Failed to save battle result' });
-    }
-  });
-*/}
-
-  app.post('/game/saveResult', async (req, res) => {
-    const { winner, selectedPokemon, opponentPokemon } = req.body;
-
-    // Basic validation
-    if (!winner || !selectedPokemon || !opponentPokemon) {
-        return res.status(400).json({ message: 'Missing required fields' });
-    }
-
-    try {
-        const newResult = new BattleResult({
-            winner,
-            selectedPokemon: selectedPokemon.name,  // Save the name of the selected Pokémon
-            opponentPokemon: opponentPokemon.name  // Save the name of the opponent Pokémon
-        });
-        await newResult.save();
-        res.status(201).json({ message: 'Battle result saved successfully' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Failed to save battle result' });
-    }
-});
 
 
 
