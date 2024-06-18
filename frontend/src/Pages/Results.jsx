@@ -53,7 +53,7 @@ const Results = () => {
         // Fetch the battle results from the backend
         const fetchResults = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/game/results");
+                const response = await axios.get("https://pokeapigameproject.onrender.com/game/results");
                 console.log(response);
                 setResults(response.data);
             } catch (error) {

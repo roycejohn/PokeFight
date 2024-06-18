@@ -31,7 +31,7 @@ function PokeFight() {
 // Updated saveBattleResult function
 const saveBattleResult = async (winner) => {
   try {
-      await axios.post('http://localhost:3000/game/saveResult', {
+      await axios.post('https://pokeapigameproject.onrender.com/game/saveResult', {
           winner,
           selectedPokemon: { name: selectedPokemon.name },
           opponentPokemon: { name: opponentPokemon.name }
