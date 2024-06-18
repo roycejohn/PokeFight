@@ -5,6 +5,7 @@ function PokeBoard() {
   const [isPaused, setIsPaused] = useState(false);
   const [firstPick, setFirstPick] = useState(null);
   const [notification, setNotification] = useState('');
+  const [matchedPairs, setMatchedPairs] = useState(0);
 
   const colors = {
     fire: '#FDDFDF',
@@ -40,6 +41,7 @@ function PokeBoard() {
       const loadedPokemon = await loadPokemon();
       setPokemon([...loadedPokemon, ...loadedPokemon].sort(() => Math.random() - 0.5));
       setNotification('');
+      setMatchedPairs(0);
     };
 
     resetGame();
@@ -53,6 +55,12 @@ function PokeBoard() {
       return () => clearTimeout(timer);
     }
   }, [notification]);
+
+  useEffect(() => {
+    if (matchedPairs === pokemon.length / 2 && pokemon.length > 0) {
+      setNotification('Congratulations! You matched all the cards!');
+    }
+  }, [matchedPairs, pokemon.length]);
 
   const handleCardClick = (event, poke) => {
     if (isPaused) return;
@@ -75,6 +83,7 @@ function PokeBoard() {
         setNotification(`It is a match: ${firstPokemonName}!`);
         setFirstPick(null);
         setIsPaused(false);
+        setMatchedPairs(prev => prev + 1); // Increase matched pairs count by 1
       } else {
         setIsPaused(true);
         setTimeout(() => {
