@@ -28,14 +28,20 @@ function PokeFight() {
   }, []);
 
   // Here is function to save battle result to backend Mongo
-  const saveBattleResult = async (winner) => {
-    try {
-      await axios.post('http://localhost:3000/game/saveResult', { winner });
+// Updated saveBattleResult function
+const saveBattleResult = async (winner) => {
+  try {
+      await axios.post('http://localhost:3000/game/saveResult', {
+          winner,
+          selectedPokemon: { name: selectedPokemon.name },
+          opponentPokemon: { name: opponentPokemon.name }
+      });
       console.log('Battle result saved successfully');
-    } catch (err) {
+  } catch (err) {
       console.error('Failed to save battle result:', err);
-    }
-  };
+  }
+};
+
 
   const handleSearchInputChange1 = (e) => {
     setSearchTerm1(e.target.value);
@@ -86,7 +92,7 @@ function PokeFight() {
         setWinner(selectedPokemon.name);
         setBattleLog(log);
         setBattleOver(true);
-        saveBattleResult(selectedPokemon.name); // added if winner is selected to save name
+        saveBattleResult(selectedPokemon.name ); // added if winner is selected to save name
         return;
       }
 
