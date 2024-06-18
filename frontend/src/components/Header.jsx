@@ -26,6 +26,7 @@ const Header = () => {
             <a href="/" className="hover:text-gray-100">Home</a>
             <a href="/pokemons" className="hover:text-gray-100">Pokédex</a>
             <a href="/game" className="hover:text-gray-100">Games</a>
+            <a href="/results" className="hover:text-gray-100">Laderboard</a>
             <a href="/about" className="hover:text-gray-100">About</a>
           </nav>
 
@@ -52,6 +53,7 @@ const Header = () => {
               <a href="/" className="block py-2 px-4 font-bold hover:bg-gray-500">Home</a>
               <a href="/pokemons" className="block py-2 px-4 font-bold hover:bg-gray-500">Pokédex</a>
               <a href="/game" className="block py-2 px-4 font-bold hover:bg-gray-500">Game</a>
+
               <a href="/about" className="block py-2 px-4 font-bold hover:bg-gray-500">About</a>
             </div>
             <div className="sign-list flex justify-center mt-4">
