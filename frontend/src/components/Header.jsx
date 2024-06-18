@@ -26,7 +26,7 @@ const Header = () => {
             <a href="/" className="hover:text-gray-100">Home</a>
             <a href="/pokemons" className="hover:text-gray-100">Pokédex</a>
             <a href="/game" className="hover:text-gray-100">Games</a>
-            <a href="/results" className="hover:text-gray-100">Laderboard</a>
+            <a href="/results" className="hover:text-gray-100">Leaderboard</a>
             <a href="/about" className="hover:text-gray-100">About</a>
           </nav>
 
