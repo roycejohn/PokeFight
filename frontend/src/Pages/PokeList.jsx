@@ -16,7 +16,7 @@ const PokeList = () => {
 
   useEffect(() => {
     // fetch('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json')
-    fetch('http://localhost:3000/json/pokemon/')
+    fetch('https://pokeapigameproject.onrender.com/json/pokemon/')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

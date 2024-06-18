@@ -14,7 +14,7 @@ const PokeDetails = () => {
     setLoading(true);
     setError(null);
 
-    fetch(`http://localhost:3000/json/pokemon/`)
+    fetch(`https://pokeapigameproject.onrender.com/json/pokemon/`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
