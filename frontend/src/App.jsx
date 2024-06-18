@@ -9,6 +9,7 @@ import About from './Pages/About'
 import Game from './Pages/Game'
 import PokeBoard from './Pages/PokeBoard'
 import PokeFight from './Pages/PokeFight'
+import Results from './Pages/Results'
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/game" element={<Game />} />
             <Route path='/game/pokeboard' element={<PokeBoard />} />
             <Route path='/game/pokefight' element={<PokeFight />} />
+            <Route path="/results" element={<Results />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </div>

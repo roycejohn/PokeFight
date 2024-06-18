@@ -1,5 +1,6 @@
 //chnage name if necessary
 const {Router} = require( "express") 
+const { saveResult } = require("../controllers/json_file_pokemonController.js")
 const pokemonRouter =  Router()
 
 const {getAllPokemons, getPokemonById, createOnePokemon, updateOnePokemon, getPokemonInfo, deleteOnePokemon } = require("../controllers/pokemonController.js")
@@ -7,6 +8,10 @@ const {getAllPokemons, getPokemonById, createOnePokemon, updateOnePokemon, getPo
 
 pokemonRouter.route("/").get(getAllPokemons) 
 .post(createOnePokemon)
+
+
+
+
 
 {/* 
 

@@ -2,6 +2,9 @@
 require("dotenv").config();
 const express = require("express")
 const app = express()
+const gameJsonRouter = require("./routes/pokemonJsonRoutes")  // route for game results
+// const mongoose = require('mongoose'); // testing for results
+
 
 const connectionToDB = require("./db/dbConnection")
 const sanitize = require ("express-mongo-sanitize")
@@ -10,8 +13,9 @@ const sanitize = require ("express-mongo-sanitize")
 const cors = require ('cors');
  
 
-// 
-const pokemonRouter = require("./routes/pokemonRoutes")
+//  Router for MongoDB Pokemon
+{/*  const pokemonRouter = require("./routes/pokemonRoutes")  */}
+
 // connection to Mongo DB
 connectionToDB()
 
@@ -34,6 +38,10 @@ app.get("/", (req,res) => {
         "<h1>Hello Pokedex</h1> <p> Good morning: Royce & Rabia</p> <p>Take your morning coffee :) and dont forget to choose your Pokemon !!</p>")
 })
 
+
+// route for game results
+// Endpoint to save battle results
+app.use("/game", gameJsonRouter)
 
 // Get all Pokemons : /pokemon
 app.get( "/json/pokemon", getAllPokemons)
