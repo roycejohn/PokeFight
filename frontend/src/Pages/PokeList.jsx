@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import loadingPoke from "../assets/pokeballAni.gif"
+import pokedexImage from '../assets/pokedex.png'
 
 const PokeList = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -77,7 +78,8 @@ const PokeList = () => {
   return (
     <div className="pokedex-page container flex flex-col items-center justify-center p-4">
       <div className="text-center mb-4">
-        <h1 className="text-2xl font-bold">Web PokéAPI</h1>
+        <img className="h-32 w-96" src={pokedexImage} />
+        <h1 className="text-xl text-gray-600 mb-4">Choose Your Pokémon :</h1>
       </div>
       <div className="flex flex col sm:flex-row items-center mb-4">
         <input

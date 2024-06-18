@@ -21,7 +21,7 @@ const Home = () => {
                     See Pokedex
                 </button>
                 <button className='button-right' onClick={() => window.location.href = '/game'}>
-                    Play Game
+                    Play Games
                 </button>
             </div>
             
