@@ -52,12 +52,14 @@ app.get('/json/pokemon/:id', getPokemonById);
 // Optional route to get specific information about a Pokémon
 app.get('/json/pokemon/:id/:info', getPokemonInfo);
 
+
 // Endpoint to save battle results
+{/* 
 app.post('/game/saveResult', async (req, res) => {
-    const { winner } = req.body;
+    const { winner, selectedPokemon, opponentPokemon  } = req.body;
   
     try {
-      const newResult = new BattleResult({ winner });
+      const newResult = new BattleResult({ winner, selectedPokemon, opponentPokemon  });
       await newResult.save();
       res.status(201).json({ message: 'Battle result saved successfully' });
     } catch (err) {
@@ -65,6 +67,30 @@ app.post('/game/saveResult', async (req, res) => {
       res.status(500).json({ message: 'Failed to save battle result' });
     }
   });
+*/}
+
+  app.post('/game/saveResult', async (req, res) => {
+    const { winner, selectedPokemon, opponentPokemon } = req.body;
+
+    // Basic validation
+    if (!winner || !selectedPokemon || !opponentPokemon) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    try {
+        const newResult = new BattleResult({
+            winner,
+            selectedPokemon: selectedPokemon.name,  // Save the name of the selected Pokémon
+            opponentPokemon: opponentPokemon.name  // Save the name of the opponent Pokémon
+        });
+        await newResult.save();
+        res.status(201).json({ message: 'Battle result saved successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to save battle result' });
+    }
+});
+
 
 
 {/*    MONGO DB
